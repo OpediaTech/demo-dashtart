@@ -38,7 +38,7 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
       product,
     };
 
-    fetch('http://localhost:5000/api/products/payment', {
+    fetch(`${process.env.BACKEND_URL}/api/products/payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

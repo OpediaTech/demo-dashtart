@@ -28,7 +28,7 @@ const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
   async function getUser() {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/products', {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/products`, {
         method: 'GET',
         headers: {
           'access-control-allow-origin': '*',

@@ -64,7 +64,7 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
     setLoading(true);
     try {
       const response = await fetch(
-        'http://localhost:5000/api/products/allcategory',
+        `${process.env.BACKEND_URL}/api/products/allcategory`,
         {
           method: 'GET',
           headers: {

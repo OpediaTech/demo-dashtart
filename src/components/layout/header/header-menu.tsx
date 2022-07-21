@@ -58,7 +58,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   async function getUser() {
     try {
       const response = await fetch(
-        'http://localhost:5000/api/products/allcategory',
+        `${process.env.BACKEND_URL}/api/products/allcategory`,
         {
           method: 'GET',
           headers: {
