@@ -35,7 +35,7 @@ export default function CheckoutPage() {
       product,
     };
 
-    fetch(`${process.env.BACKEND_URL}/api/products/payment`, {
+    fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

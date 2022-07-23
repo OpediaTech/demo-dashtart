@@ -72,7 +72,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
   const loginghandler = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/users/login`, requestOptions).then(
+      await fetch(`https://sami-project.herokuapp.com/api/users/login`, requestOptions).then(
         (response) => {
           response.json().then((data) => {
             console.log(response.status);

@@ -70,7 +70,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   const loginghandler = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.BACKEND_URL}/api/users`, requestOptions).then(
+      await fetch(`https://sami-project.herokuapp.com/api/users`, requestOptions).then(
         (response) => {
           response.json().then((data) => {
             console.log(response.status);
