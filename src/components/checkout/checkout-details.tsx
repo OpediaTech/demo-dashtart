@@ -31,7 +31,7 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
     token: any;
   }
 
-  const StripePaymentHandler = (token: tokeninterface) => {
+  const StripePaymentHandler = (token: any) => {
     console.log('token checkout', token);
     const data = {
       token,

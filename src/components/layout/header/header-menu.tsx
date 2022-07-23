@@ -53,12 +53,12 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   useEffect(() => {
     console.log('Start from here');
     getUser();
-  }, []);
+  }, [serverCategory]);
 
   async function getUser() {
     try {
       const response = await fetch(
-        `${process.env.BACKEND_URL}/api/products/allcategory`,
+        `https://sami-project.herokuapp.com/api/products/allcategory`,
         {
           method: 'GET',
           headers: {
@@ -73,6 +73,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
       }
 
       const result = await response.json();
+      console.log("result for category:",result )
       setServerCategory(result);
       return result;
     } catch (err) {

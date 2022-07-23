@@ -64,7 +64,7 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
     setLoading(true);
     try {
       const response = await fetch(
-        `${process.env.BACKEND_URL}/api/products/allcategory`,
+        `https://sami-project.herokuapp.com/api/products/allcategory`,
         {
           method: 'GET',
           headers: {
