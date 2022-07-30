@@ -144,9 +144,10 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
             <CategoryCard
               key={`category--key-${index}`}
               item={category}
+              
               href={{
                 pathname: ROUTES.SEARCH,
-                // query: { category: category?.slug },
+                // query: { category: category?.title },
               }}
               className="shrink-0 2xl:px-3.5 2xl:w-[12.5%] 3xl:w-1/9 mb-12"
             />

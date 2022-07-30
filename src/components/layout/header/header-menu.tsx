@@ -3,8 +3,10 @@ import { FaChevronDown } from 'react-icons/fa';
 import ListMenu from '@components/ui/list-menu';
 import ListCat from '@components/ui/list-cat';
 import { useTranslation } from 'next-i18next';
+
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect,Fragment, useRef, useState } from 'react';
+const zipcodes = require('zipcodes');
 
 interface MenuProps {
   data: any;
@@ -12,6 +14,7 @@ interface MenuProps {
 }
 
 const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
+
   const { t } = useTranslation('menu');
   const cat = {
     id: 2,
@@ -82,6 +85,8 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   }
 
   // console.log('All Datas come from server:', serverCategory);
+
+
 
   return (
     <nav
@@ -162,6 +167,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
           )}
         </div>
       ))}
+      
     </nav>
   );
 };

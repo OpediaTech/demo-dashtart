@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Layout from '@components/layout/layout';
+  import React, { useState } from 'react';
+  import Layout from '@components/layout/layout';
 import Container from '@components/ui/container';
 import PageHeroSection from '@components/ui/page-hero-section';
 import DownloadApps from '@components/common/download-apps';

@@ -9,7 +9,7 @@ const ShopsPageContent: React.FC = () => {
   const { data, error } = useShopsQuery({
     limit: 9,
   });
-
+ const allstore :any = data?.shop?.data? data?.shop?.data : []; 
   if (error) return <Alert message={error?.message} />;
 
   return (
@@ -19,9 +19,10 @@ const ShopsPageContent: React.FC = () => {
           {t('text-all-shops')}
         </Heading>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6">
-          {data?.shop?.data?.map((item) => (
+          {allstore.length && allstore.map((item:any) => (
             <VendorCard key={item.id} shop={item} />
           ))}
+          {/* {allstore.length > 0 && <h2>  No Store Availeable</h2>} */}
         </div>
       </div>
     </div>

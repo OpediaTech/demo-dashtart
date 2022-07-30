@@ -102,6 +102,7 @@ const Header: React.FC = () => {
               <SearchIcon className="w-[22px] h-[22px] text-brand-dark text-opacity-40 ltr:-ml-2 rtl:-mr-2" />
             </button>
             {/* End of search handler btn */}
+            
             <div className="xl:mx-3.5 mx-2.5">
               <LanguageSwitcher />
             </div>

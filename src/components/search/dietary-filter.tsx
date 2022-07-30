@@ -47,7 +47,7 @@ export const DietaryFilter = () => {
       { scroll: false }
     );
   }
-  const items = data?.dietary?.data;
+  const items = data?.dietary?.data ? data?.dietary?.data : [];
 
   return (
     <div className="block">

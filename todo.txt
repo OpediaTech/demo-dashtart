@@ -1,4 +1,3 @@
-added backend url on process.env
-
-need to check product and cat url is working fine or not
-
+1. If change any live site then change backend checkour redirectedURL 
+2. Add search functionality
+3.  

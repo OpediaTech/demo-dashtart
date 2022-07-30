@@ -78,11 +78,11 @@ const Header: React.FC = () => {
                 isAuthorized={isAuthorized}
                 href={ROUTES.ACCOUNT}
                 btnProps={{
-                  children: t('text-sign-in'),
+                  children: t('sign-in'),
                   onClick: handleLogin,
                 }}
               >
-                {t('text-account')}
+                {t('account')}
               </AuthMenu>
             </div>
           </div>
