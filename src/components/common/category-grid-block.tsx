@@ -97,9 +97,11 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
         headingPosition="center"
       />
       <div className="block 2xl:flex justify-center flex-wrap 3xl:-mx-3.5">
-        {error ? (
-          <Alert message={error?.message} className="mb-14 3xl:mx-3.5" />
-        ) : width! < 1536 ? (
+        {
+        loading ? (
+          <CategoryCardLoader uniqueKey={`fsdfsdf`} />
+        ) : width! < 1536 ? 
+        (
           <Carousel
             autoplay={false}
             breakpoints={breakpoints}
