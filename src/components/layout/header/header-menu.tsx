@@ -51,7 +51,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   const [serverCategory, setServerCategory] = useState([]);
 
   useEffect(() => {
-    console.log('Start from here');
+    // console.log('Start from here');
     getUser();
   }, [serverCategory]);
 
@@ -73,7 +73,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
       }
 
       const result = await response.json();
-      console.log("result for category:",result )
+      // console.log("result for category:",result )
       setServerCategory(result);
       return result;
     } catch (err) {

@@ -7,7 +7,8 @@ import { useTranslation } from 'next-i18next';
 
 const ContactBox: React.FC<{ items?: any }> = ({ items: { data } }) => {
   const { t } = useTranslation('common');
-  let [contactData, setContactData] = useState(data);
+  let [contactData, setContactData] = useState([]);
+  // let [contactData, setContactData] = useState(data);
   const { openModal } = useModalAction();
 
   function handlePopupView(item: any) {

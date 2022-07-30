@@ -23,7 +23,7 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
 
   const product = {
     name: 'Stripe course',
-    price: priceCart,
+    price: 1000,
     productby: 'facebook',
   };
 
@@ -31,14 +31,14 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
     token: any;
   }
 
-  const StripePaymentHandler = (token: any) => {
-    console.log('token checkout', token);
+  const StripePaymentHandler = () => {
+    // console.log('token checkout', token);
     const data = {
-      token,
-      product,
+      product
     };
 
-    fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
+    fetch(`http://localhost:5000/api/products/payment`, {
+    // fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,13 +46,42 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        console.log('response', response);
-        const { status } = response;
-        console.log('STATUS', status);
-        status === 200 && router.push('/');
+        if(response.ok) return response.json();
+         
+        return response.json().then(json => Promise.reject(json))
+
+      })
+      .then(({url})=>{
+        console.log(url)
+        window.location = url
       })
       .catch((err) => console.log(err));
   };
+
+
+  // const StripePaymentHandler = (token: any) => {
+  //   console.log('token checkout', token);
+  //   const data = {
+  //     token,
+  //     product,
+  //   };
+
+  //   fetch(`http://localhost:5000/api/products/payment`, {
+  //   // fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => {
+  //       console.log('response', response);
+  //       const { status } = response;
+  //       console.log('STATUS', status);
+  //       status === 200 && router.push('/');
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const data = [
     {
@@ -85,17 +114,20 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
       id: 6,
       title: 'text-payment-option',
       component: (
-        <StripeCheckout
-          token={StripePaymentHandler}
-          amount={product?.price * 100} // cents
-          currency="USD"
-          stripeKey="pk_test_51L2pj4JsstQNEHZrT6AstJs5e13371TDGxS6OlSuJC4ejTwQ9T6AU5A49jfD2BS0lWpIRHkWQjNd59mUl9HfNhJf001UghFhNn"
-          name="Shami checkout"
-        >
-          <button className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
+              <button onClick={StripePaymentHandler}   className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
             Pay Now
           </button>
-        </StripeCheckout>
+        // <StripeCheckout
+        //   token={StripePaymentHandler}
+        //   amount={product?.price * 100} // cents
+        //   currency="USD"
+        //   stripeKey="pk_test_51L2pj4JsstQNEHZrT6AstJs5e13371TDGxS6OlSuJC4ejTwQ9T6AU5A49jfD2BS0lWpIRHkWQjNd59mUl9HfNhJf001UghFhNn"
+        //   name="Shami checkout"
+        // >
+        //   <button className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
+        //     Pay Now
+        //   </button>
+        // </StripeCheckout>
       ),
       // component: <StripeCheckoutInlineForm />,
     },
