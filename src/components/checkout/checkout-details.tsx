@@ -32,7 +32,7 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
   }
 
   const StripePaymentHandler = () => {
-    // console.log('token checkout', token);
+    console.log('token checkout');
     const data = {
       product
     };
@@ -47,6 +47,9 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
     })
       .then((response) => {
         if(response.ok) return response.json();
+        // const noData:any = ''
+        // console.log("Removesd: ",localStorage.getItem("borobazar-cart") )
+        // if(response.ok) return localStorage.setItem("borobazar-cart", noData) ;
          
         return response.json().then(json => Promise.reject(json))
 

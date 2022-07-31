@@ -7,7 +7,7 @@ import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
 import { FaCheck } from 'react-icons/fa';
 
-function checkIsActive(arr: any, item: string) {
+function checkIsActive(arr: any, item: any) {
   if (arr.includes(item)) {
     return true;
   }
@@ -35,7 +35,9 @@ function CategoryFilterMenuItem({
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
+
   const { slug, name, children: items, icon } = item;
+  console.log("Data:", item)
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -107,7 +109,7 @@ function CategoryFilterMenuItem({
               />
             </div>
           )}
-          <span className="text-brand-dark capitalize py-0.5">{name}</span>
+          <span className="text-brand-dark capitalize py-0.5">{item}</span>
           {depth > 0 && (
             <span
               className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
@@ -119,7 +121,7 @@ function CategoryFilterMenuItem({
             </span>
           )}
           {expandIcon && (
-            <span className="ltr:ml-auto rtl:mr-auto">{expandIcon}</span>
+            <span className="ltr:ml-auto rtl:mr-auto">{item}</span>
           )}
         </button>
       </li>
@@ -145,9 +147,46 @@ function CategoryFilterMenuItem({
 }
 
 function CategoryFilterMenu({ items, className }: any) {
+
+  const [loading, setLoading] = useState(true);
+
+  const [serverCategory, setServerCategory] = useState([]);
+  useEffect(() => {
+    // console.log('Start from here');
+    getUser();
+  }, [serverCategory]);
+
+  async function getUser() {
+    try {
+      const response = await fetch(
+        `https://sami-project.herokuapp.com/api/products/allcategory`,
+        {
+          method: 'GET',
+          headers: {
+            'access-control-allow-origin': '*',
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      // console.log("result for category:",result )
+      setServerCategory(result);
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
   return (
     <ul className={cn(className)}>
-      {items?.map((item: any) => (
+      {serverCategory?.map((item: any) => (
         <CategoryFilterMenuItem
           key={`${item.slug}-key-${item.id}`}
           item={item}

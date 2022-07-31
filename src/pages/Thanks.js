@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Seo from '@components/seo/seo';
 
 import Layout from '@components/layout/layout';
@@ -7,6 +7,13 @@ import PageHeroSection from '@components/ui/page-hero-section';
 import DownloadApps from '@components/common/download-apps';
 
 function Thanks() {
+  let noData = ""
+
+  useEffect(()=> {
+   
+        console.log("Removesd: ",localStorage.getItem("borobazar-cart") )
+        localStorage.setItem("borobazar-cart", undefined) ;
+  },[])
   return (
     <>
     <Seo
