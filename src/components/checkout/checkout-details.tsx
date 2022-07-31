@@ -20,10 +20,12 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
       setBindIndex(itemIndex);
     }
   };
+  let priceCart1:any = priceCart*100
 
+console.log("priceCart", priceCart)
   const product = {
     name: 'Stripe course',
-    price: 1000,
+    price: Math.round(priceCart1.toFixed(2)) ,
     productby: 'facebook',
   };
 

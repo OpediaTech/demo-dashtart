@@ -12,7 +12,7 @@ function Thanks() {
   useEffect(()=> {
    
         console.log("Removesd: ",localStorage.getItem("borobazar-cart") )
-        localStorage.setItem("borobazar-cart", undefined) ;
+        localStorage.removeItem("borobazar-cart");
   },[])
   return (
     <>

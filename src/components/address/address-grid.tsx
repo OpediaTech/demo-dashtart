@@ -15,7 +15,20 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
     openModal('ADDRESS_VIEW_AND_EDIT', item);
   }
 
-  address = address || [];
+  const addressList = [
+    {
+      title: "Main address",
+      address:"Mirpur-14, Dhaka-1206"
+    },
+    {
+      title: "Offce address",
+      address:"Shawrapare, Cant-9607"
+    },
+    {
+      title: "Secondary address",
+      address:"Adomjii Dhaka Cant School road"
+    },
+  ];
 
   const [selected, setSelected] = useState(address[0]);
   return (
@@ -26,8 +39,8 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
         className="space-y-4 md:grid md:grid-cols-2 md:gap-5 auto-rows-auto md:space-y-0"
       >
         <RadioGroup.Label className="sr-only">{t('address')}</RadioGroup.Label>
-        {address?.length > 0 ? (
-          address?.map((item: any, index: any) => (
+        {[1,2,3,4]?.length > 0 ? (
+          addressList?.map((item: any, index: any) => (
             <RadioGroup.Option
               key={index}
               value={item}
@@ -46,7 +59,7 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
                 as="div"
                 className="leading-6 text-brand-muted"
               >
-                {formatAddress(item?.address)}
+                {(item?.address)}
               </RadioGroup.Description>
               <div className="absolute z-10 flex transition-all ltr:right-3 rtl:left-3 top-3 lg:opacity-0 address__actions">
                 <button
