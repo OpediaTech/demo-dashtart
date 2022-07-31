@@ -25,6 +25,7 @@ import ProductDetailsTab from '@components/product/product-details/product-tab';
 import VariationPrice from './variation-price';
 import isEqual from 'lodash/isEqual';
 
+
 const ProductSingleDetails: React.FC = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
@@ -96,6 +97,7 @@ const ProductSingleDetails: React.FC = () => {
   }
   function addToWishlist() {
     // to show btn feedback while product wishlist
+  
     setAddToWishlistLoader(true);
     setFavorite(!favorite);
     const toastStatus: string =

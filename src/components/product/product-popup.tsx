@@ -94,7 +94,7 @@ export default function ProductPopup() {
     );
   }
   const item = generateCartItem(data, selectedVariation);
-  console.log('Popup item :', item);
+  // console.log('Popup item :', item);
   const outOfStock = isInCart(item?.id) && !isInStock(item.id);
   function addToCart() {
     if (!isSelected) return;
@@ -116,8 +116,25 @@ export default function ProductPopup() {
     });
   }
   async function addToWishlist() {
+    
+    const Fetchwishlst:any = localStorage.getItem('AllWishlist');
+    let Fetchwishlst1:any = JSON.parse(Fetchwishlst)?.length ? JSON.parse(Fetchwishlst) : [];
+
+    
+    const ftdata = [...Fetchwishlst1]
+
+    const allwr:any = [data, ...ftdata]
+    localStorage.setItem('AllWishlist', JSON.stringify(allwr));
     setAddToWishlistLoader(true);
-    setFavorite(!favorite);
+    
+    // const findornot = Fetchwishlst1.find((i:any) =>{
+      
+    //    return i._id === data._id })
+
+    //    findornot ? setFavorite(true) :  setFavorite(false)
+
+    setFavorite(!favorite)
+    
     const toastStatus: string =
       favorite === true ? t('text-remove-favorite') : t('text-added-favorite');
     setTimeout(() => {

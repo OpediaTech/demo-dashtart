@@ -28,7 +28,7 @@ const WishlistProductCard: FC<ProductProps> = ({ product, className }) => {
         <div className="relative mt-1 shrink-0">
           <div className="flex overflow-hidden max-w-[80px]  transition duration-200 ease-in-out transform group-hover:scale-105">
             <Image
-              src={image?.thumbnail ?? placeholderImage}
+              src={image[0]}
               alt={name || 'Product Image'}
               width={80}
               height={80}

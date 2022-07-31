@@ -20,9 +20,9 @@ interface Variation {
   quantity: number;
   [key: string]: unknown;
 }
-export function generateCartItem(item: Item, variation: Variation) {
+export function generateCartItem(item: any, variation: Variation) {
   const { _id, name, slug, image, price, sale_price, quantity, unit } = item;
-  console.log(item._id);
+  // console.log(item._id);
   if (!isEmpty(variation)) {
     return {
       id: _id,

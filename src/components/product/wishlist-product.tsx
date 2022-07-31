@@ -1,5 +1,5 @@
 import WishlistProductCard from '@components/product/wishlist-product-card';
-import type { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useWishlistProductsQuery } from '@framework/product/get-wishlist-product';
 import ProductCardLoader from '@components/ui/loaders/product-card-loader';
 import Alert from '@components/ui/alert';
@@ -8,14 +8,46 @@ interface ProductWishlistProps {
   element?: any;
   className?: string;
 }
+
+
 const ProductWishlistGrid: FC<ProductWishlistProps> = ({
   element,
   className = '',
 }) => {
+
   const limit = 35;
-  const { data, isLoading, error } = useWishlistProductsQuery({
+  let data:any = []
+  const {  isLoading, error } = useWishlistProductsQuery({
     limit: limit,
   });
+
+
+  let  data1:any 
+  
+
+
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    // 👉️ can use localStorage here
+    data1  = localStorage?.getItem('AllWishlist')
+    data  = JSON.parse(data1)
+  } else {
+    console.log('You are on the server')
+    // 👉️ can't use localStorage
+  }
+
+
+  // let data1:any 
+  // useEffect(() => {
+  //   // Perform localStorage action
+    
+     
+  //    console.log("Kichui nai ?",data)
+  // }, [])
+
+
+
+
   return (
     <div className={cn(className)}>
       {error ? (
@@ -29,7 +61,7 @@ const ProductWishlistGrid: FC<ProductWishlistProps> = ({
                   uniqueKey={`product--key-${idx}`}
                 />
               ))
-            : data?.map((product: any) => (
+            : data.length &&  data?.map((product: any) => (
                 <WishlistProductCard
                   key={`product--key${product.id}`}
                   product={product}
