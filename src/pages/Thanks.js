@@ -11,6 +11,10 @@ function Thanks() {
 
   useEffect(()=> {
    
+  localStorage.removeItem("borobazar-cart");
+  localStorage.removeItem("borobazar-cart");
+  localStorage.removeItem("borobazar-cart");
+  localStorage.removeItem("borobazar-cart");
         console.log("Removesd: ",localStorage.getItem("borobazar-cart") )
         localStorage.removeItem("borobazar-cart");
   },[])
