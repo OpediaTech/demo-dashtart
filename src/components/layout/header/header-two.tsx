@@ -193,7 +193,7 @@ const Header: React.FC = () => {
           {/* zip Code  */}
 
 
-            <div className="xl:mx-3.5 mx-2.5">
+            <div className="xl:mx-3.5 py-3  mx-2.5">
               <LanguageSwitcher />
             </div>
             <CartButton className="hidden lg:flex xl:mx-3.5 mx-2.5" />
