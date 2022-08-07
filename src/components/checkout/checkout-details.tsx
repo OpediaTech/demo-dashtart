@@ -40,8 +40,8 @@ console.log("priceCart", priceCart)
       product
     };
 
-    fetch(`http://localhost:5000/api/products/payment`, {
-    // fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
+    // fetch(`http://localhost:5000/api/products/payment`, {
+    fetch(`https://sami-project.herokuapp.com/api/products/payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -120,9 +120,9 @@ console.log("priceCart", priceCart)
       id: 6,
       title: 'text-payment-option',
       component: (
-              <button onClick={StripePaymentHandler}   className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
-            Pay Now
-          </button>
+              <button onClick={() => StripePaymentHandler()}   className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
+                Pay Now
+              </button>
         // <StripeCheckout
         //   token={StripePaymentHandler}
         //   amount={product?.price * 100} // cents
