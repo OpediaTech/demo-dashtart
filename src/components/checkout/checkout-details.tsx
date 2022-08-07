@@ -34,6 +34,7 @@ console.log("priceCart", priceCart)
   }
 
   const StripePaymentHandler = () => {
+    localStorage.removeItem("borobazar-cart");
     console.log('token checkout');
     const data = {
       product

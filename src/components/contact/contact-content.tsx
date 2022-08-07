@@ -23,7 +23,7 @@ const ContactBox: React.FC<{ items?: any }> = ({ items: { data } }) => {
       setContactData(array);
     }
   };
-  const [selected, setSelected] = useState(data[0]);
+  const [selected, setSelected] = useState([]);
   return (
     <>
       <div className="text-[15px] text-brand-dark ">
@@ -35,7 +35,7 @@ const ContactBox: React.FC<{ items?: any }> = ({ items: { data } }) => {
           <RadioGroup.Label className="sr-only">
             {t('text-default')}
           </RadioGroup.Label>
-          {contactData?.map((item: any, index: any) => (
+          {[1].map((item: any, index: any) => (
             <RadioGroup.Option
               key={index}
               value={item}

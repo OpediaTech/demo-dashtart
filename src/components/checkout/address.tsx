@@ -4,7 +4,7 @@ import AddressGrid from '@components/address/address-grid';
 const AddressPage: React.FC = () => {
   let { data, isLoading } = useAddressQuery();
   return !isLoading ? (
-    <AddressGrid address={data?.data} />
+    <AddressGrid address={[]} />
   ) : (
     <div>Loading...</div>
   );

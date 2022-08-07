@@ -7,7 +7,7 @@ const ContactPage: React.FC = () => {
     <div className="w-full max-w-[1300px] mx-auto">
       <div className="flex flex-wrap">
         <div className="w-full">
-          <ContactBox items={data} />
+          <ContactBox items={[]} />
         </div>
       </div>
     </div>
