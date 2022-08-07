@@ -54,8 +54,21 @@ const Header: React.FC = () => {
     var hills = zipcodes.lookup(zipCode);
     console.log(hills);
     setZipCodeResultare(hills?.city);
+    // hills !== undefined && setZipCodeResultare(hills?.city);;
     hills === undefined && setZipCodeResult(false);
+    hills === undefined && setZipCode(null);
+    
   };
+
+  useEffect(() => {
+
+    const isZipped = localStorage.getItem("zip")
+    console.log(isZipped) 
+    {isZipped !== "true" && setTimeout(()=> {
+      setOpen(true)
+      localStorage.setItem("zip", "true")
+    },2000)}
+  }, [])
 
   return (
     <header
@@ -94,7 +107,7 @@ const Header: React.FC = () => {
         className="areawesearve relative py-3 mx-3 cursor-pointer  group xl:mx-4"
       >
         <p className="aretext relative inline-flex items-center py-2 text-sm font-normal lg:text-15px text-brand-dark group-hover:text-brand before:absolute before:w-0 before:ltr:right-0 rtl:left-0 before:bg-brand before:h-[3px] before:transition-all before:duration-300 before:-bottom-[14px] group-hover:before:w-full ltr:group-hover:before:left-0 rtl:group-hover:before:right-0 lrt:group-hover:before:right-auto rtl:group-hover:before:left-auto">
-          Area we Delivered
+          {zipCode ? zipCode :" Area we Delivered"}
         </p>
       </div>
 
@@ -160,9 +173,10 @@ const Header: React.FC = () => {
                             as="h3"
                             className="text-lg leading-6 font-medium text-gray-900"
                           >
-                            we are Delivery AT: {zipCodeResultare}
+                            We are delivery at: {zipCodeResultare}
                           </Dialog.Title>
-                        )}
+                        ) }
+                        
                       </div>
                     </div>
                   </div>
