@@ -65,14 +65,26 @@ const totalPrd = data.data;
             ))
           ) : (
             <>
-              {totalPrd?.map((product: any, index:any) => {
+              {totalPrd?.map((page: any, index:any) => {
                 return (
                   <Fragment key={index}>
-                  <ProductCard
-                    key={`product--key${product.id}`}
-                    product={product}
-                  />
-                </Fragment>
+                    {page?.data?.slice(0, 18)?.map((product: Product) => (
+                      <ProductCard
+                        key={`121`}
+                        product={product}
+                      />
+                    ))}
+                    {element && <div className="col-span-full">{element}</div>}
+                    {page?.data?.length! > 18 &&
+                      slice(page?.data, 18, page?.data?.length).map(
+                        (product: any) => (
+                          <ProductCard
+                            key={`product--key${product.id}`}
+                            product={product}
+                          />
+                        )
+                      )}
+                  </Fragment>
                 );
               })}
             </>
