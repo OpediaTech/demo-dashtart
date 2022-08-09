@@ -12,16 +12,19 @@ type VendorCardProps = {
 const VendorCard: React.FC<VendorCardProps> = ({ shop }) => {
   const { t } = useTranslation();
   const placeholderImage = `/assets/placeholder/products/product-grid.svg`;
-  const { name, slug, address, logo } = shop;
+  const { _id, name, description, address, image } = shop;
+
+  const slug: any = _id;
+  console.log("shop", shop)
   return (
     <Link
-      href={`${ROUTES.SHOPS}/${slug}`}
+    href={`${ROUTES.SHOPS}/${slug}`}
       className="relative flex items-center px-5 py-5 transition-all bg-white border rounded-lg cursor-pointer xl:px-7 xl:py-7 border-border-base shadow-vendorCard hover:shadow-vendorCardHover"
     >
       <div className="relative flex items-center justify-center w-16 h-16 overflow-hidden rounded-full shrink-0 bg-fill-thumbnail xl:w-20 xl:h-20">
         <Image
           alt={t('common:text-logo')}
-          src={logo?.thumbnail ?? placeholderImage}
+          src={image}
           layout="fill"
           objectFit="cover"
         />

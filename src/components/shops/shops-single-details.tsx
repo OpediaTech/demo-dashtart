@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useShopQuery } from '@framework/shop/get-shop';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -13,18 +14,57 @@ import { useTranslation } from 'next-i18next';
 import useWindowSize from '@utils/use-window-size';
 
 const ShopsSingleDetails: React.FC = () => {
+  const [serverShop, setServerShop] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const {
     query: { slug },
   } = useRouter();
   const { t } = useTranslation('common');
-  const { data, isLoading } = useShopQuery(slug as string);
+  const {  isLoading } = useShopQuery(slug as string);
   const { openShop, displayShop, closeShop } = useUI();
   const { width } = useWindowSize();
   const { locale } = useRouter();
   const dir = getDirection(locale);
   const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
+const data:any = []
+  useEffect(() => {
+    console.log('Start from here');
+    getUser();
+  }, [getUser]);
+
+  async function getUser() {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://sami-project.herokuapp.com/api/store/${slug}`,
+        {
+          method: 'GET',
+          headers: {
+            'access-control-allow-origin': '*',
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setLoading(false);
+      console.log('Total length:', result.dataLength);
+      console.log('Total store:', result.store);
+
+      console.log('Total length Profucts:', result.data);
+      setServerShop(result);
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <>
@@ -33,16 +73,17 @@ const ShopsSingleDetails: React.FC = () => {
         style={{
           backgroundImage: `url(${
             width! <= 480
-              ? data?.cover_image?.original!
-              : data?.cover_image?.thumbnail!
+              ? 'https://images.unsplash.com/photo-1554982612-dee66ebddaec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80'
+              : 'https://images.unsplash.com/photo-1554982612-dee66ebddaec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80'
           })`,
         }}
       />
+
       <div className="flex items-center px-4 py-4 border-b lg:hidden md:px-6 border-border-base mb-7">
         <div className="flex shrink-0">
           <Image
-            src={data?.logo?.original!}
-            alt={data?.name}
+            src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            alt="Nahid Murad Abir"
             width={66}
             height={66}
             className="rounded-md"
@@ -50,8 +91,10 @@ const ShopsSingleDetails: React.FC = () => {
         </div>
         <div className="ltr:pl-4 rtl:pr-4">
           <h2 className="font-semibold text-brand-dark text-15px">
-            {data?.name}
+            {/* {data?.name}   */}
+            dihan abir
           </h2>
+
           <button
             className="block text-sm font-medium transition-all text-brand hover:text-brand-muted"
             onClick={openShop}
@@ -60,6 +103,7 @@ const ShopsSingleDetails: React.FC = () => {
           </button>
         </div>
       </div>
+
       <Container>
         <Element
           name="grid"
@@ -67,12 +111,12 @@ const ShopsSingleDetails: React.FC = () => {
         >
           <div className="shrink-0 hidden lg:block lg:w-80 xl:w-[350px] 2xl:w-96 lg:sticky lg:top-16 category-mobile-sidebar">
             <div className="border border-[#EFF2F4] shadow-vendorSidebar rounded-lg">
-              <ShopSidebar data={data} />
+              <ShopSidebar data={serverShop} />
             </div>
           </div>
 
           <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            <AllProductFeed />
+            <AllProductFeed data={serverShop} />
           </div>
         </Element>
       </Container>
@@ -85,7 +129,7 @@ const ShopsSingleDetails: React.FC = () => {
         level={null}
         contentWrapperStyle={contentWrapperCSS}
       >
-        <ShopSidebarDrawer data={data} />
+        {/* <ShopSidebarDrawer data={serverShop} /> */}
       </Drawer>
     </>
   );
