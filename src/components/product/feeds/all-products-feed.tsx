@@ -35,8 +35,8 @@ const AllProductFeed: FC<ProductFeedProps> = ({data, element, className = '' }) 
   function handleCategoryPopup() {
     openModal('CATEGORY_VIEW');
   }
-console.log("data", data)
-console.log("data1", data.data)
+// console.log("data", data)
+// console.log("data1", data.data)
 
 
 const totalPrd = data.data;
