@@ -15,13 +15,9 @@ import { Product } from '@framework/types';
 interface ProductFeedProps {
   element?: any;
   className?: string;
-  data?: any;
+  data? : any
 }
-const AllProductFeed: FC<ProductFeedProps> = ({
-  element,
-  className = '',
-  data,
-}) => {
+const AllProductFeed: FC<ProductFeedProps> = ({ element, className = '' }) => {
   const { t } = useTranslation('common');
 
   const { query } = useRouter();
@@ -30,7 +26,7 @@ const AllProductFeed: FC<ProductFeedProps> = ({
     isFetchingNextPage: loadingMore,
     fetchNextPage,
     hasNextPage,
-    // data,
+    data,
     error,
   } = useProductsQuery({ limit: LIMITS.PRODUCTS_LIMITS, ...query });
 
@@ -39,7 +35,6 @@ const AllProductFeed: FC<ProductFeedProps> = ({
   function handleCategoryPopup() {
     openModal('CATEGORY_VIEW');
   }
-  const totalPrd = data.data;
 
   return (
     <div className={cn(className)}>
@@ -53,14 +48,12 @@ const AllProductFeed: FC<ProductFeedProps> = ({
           {t('text-categories')}
         </div>
       </div>
-      <h3>Total Products: {data?.dataLength}</h3>
-      <br />
       {error ? (
         <Alert message={error?.message} />
       ) : (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-4 2xl:gap-5">
           {isLoading && !data?.pages?.length ? (
-            [1,2,3,4].map((_, idx) => (
+            Array.from({ length: LIMITS.PRODUCTS_LIMITS }).map((_, idx) => (
               <ProductCardLoader
                 key={`product--key-${idx}`}
                 uniqueKey={`product--key-${idx}`}
@@ -68,17 +61,7 @@ const AllProductFeed: FC<ProductFeedProps> = ({
             ))
           ) : (
             <>
-              {totalPrd?.map((product: any, index: any) => {
-                return (
-                  <Fragment key={index}>
-                    <ProductCard
-                      key={`product--key${product.id}`}
-                      product={product}
-                    />
-                  </Fragment>
-                );
-              })}
-              {/* {totalPrd?.map((page: any, index:any) => {
+              {data?.pages?.map((page: any, index) => {
                 return (
                   <Fragment key={index}>
                     {page?.data?.slice(0, 18)?.map((product: Product) => (
@@ -99,7 +82,7 @@ const AllProductFeed: FC<ProductFeedProps> = ({
                       )}
                   </Fragment>
                 );
-              })} */}
+              })}
             </>
           )}
         </div>
