@@ -54,7 +54,7 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   // return <AddToCart data={data} />;
 }
 const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
-  const { name, image, unit, product_type } = product ?? {};
+  // const { name, image, unit, product_type } = product ?? {};
   // console.log('image', product);
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
@@ -83,14 +83,14 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
         className
       )}
       onClick={handlePopupView}
-      title={name}
+      title={product.name}
     >
       <div className="relative shrink-0">
         <div className="flex overflow-hidden max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
           <Image
-            src={image[0] ?? productPlaceholder}
+            src={product.image[0] ?? productPlaceholder}
             // src={image?.thumbnail ?? productPlaceholder}
-            alt={name || 'Product Image'}
+            alt={product.name || 'Product Image'}
             width={230}
             height={200}
             quality={100}
@@ -111,9 +111,9 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
 
       <div className="flex flex-col px-3 md:px-4 lg:px-[18px] pb-5 lg:pb-6 lg:pt-1.5 h-full">
         <div className="mb-1 lg:mb-1.5 -mx-1">
-          <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand-dark">
+          {/* <span className="inline-block mx-1 text-sm font-semibold sm:text-15px lg:text-base text-brand-dark">
             {product_type === 'variable' ? `${minPrice} - ${maxPrice}` : price}
-          </span>
+          </span> */}
           {basePrice && (
             <del className="mx-1 text-sm text-brand-dark text-opacity-70">
               {basePrice}
@@ -121,9 +121,9 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
           )}
         </div>
         <h2 className="text-brand-dark text-13px sm:text-sm lg:text-15px leading-5 sm:leading-6 mb-1.5">
-          {name}
+          {product.name}
         </h2>
-        <div className="mt-auto text-13px sm:text-sm">{unit}</div>
+        {/* <div className="mt-auto text-13px sm:text-sm">{unit}</div> */}
       </div>
     </article>
   );

@@ -36,6 +36,7 @@ const AllProductFeed: FC<ProductFeedProps> = ({data, element, className = '' }) 
     openModal('CATEGORY_VIEW');
   }
 console.log("data", data)
+console.log("data1", data.data)
 
 
 const totalPrd = data.data;
@@ -56,27 +57,20 @@ const totalPrd = data.data;
         <Alert message={error?.message} />
       ) : (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 md:gap-4 2xl:gap-5">
-          {isLoading && !data?.pages?.length ? (
-            [1,2,3,4].map((_, idx) => (
-              <ProductCardLoader
-                key={`product--key-${idx}`}
-                uniqueKey={`product--key-${idx}`}
-              />
-            ))
-          ) : (
+          {isLoading ? (
             <>
               {totalPrd?.map((page: any, index:any) => {
                 return (
                   <Fragment key={index}>
-                    {page?.data?.slice(0, 18)?.map((product: Product) => (
+                    {page?.map((product: Product) => (
                       <ProductCard
                         key={`121`}
                         product={product}
                       />
                     ))}
                     {element && <div className="col-span-full">{element}</div>}
-                    {page?.data?.length! > 18 &&
-                      slice(page?.data, 18, page?.data?.length).map(
+                    {page.length! > 18 &&
+                      page?.map(
                         (product: any) => (
                           <ProductCard
                             key={`product--key${product.id}`}
@@ -85,6 +79,35 @@ const totalPrd = data.data;
                         )
                       )}
                   </Fragment>
+                );
+              })}
+            </>
+          ) : (
+            <>
+             {totalPrd?.map((page: any, index:any) => {
+                return (
+                  // <Fragment key={index}>
+                  //   {page?.map((product: Product) => (
+                  //     <ProductCard
+                  //       key={`121`}
+                  //       product={product}
+                  //     />
+                  //   ))}
+                  //   {element && <div className="col-span-full">{element}</div>}
+                  //   {page.length! > 18 &&
+                  //     page?.map(
+                  //       (product: any) => (
+                  //         <ProductCard
+                  //           key={`product--key${product.id}`}
+                  //           product={page}
+                  //         />
+                  //       )
+                  //     )}
+                  // </Fragment>
+                  <ProductCard
+                            key={`product--key${index}`}
+                            product={page}
+                          />
                 );
               })}
             </>
