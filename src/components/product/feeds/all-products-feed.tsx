@@ -61,24 +61,28 @@ const totalPrd = data.data;
             <>
               {totalPrd?.map((page: any, index:any) => {
                 return (
-                  <Fragment key={index}>
-                    {page?.map((product: Product) => (
-                      <ProductCard
-                        key={`121`}
-                        product={product}
-                      />
-                    ))}
-                    {element && <div className="col-span-full">{element}</div>}
-                    {page.length! > 18 &&
-                      page?.map(
-                        (product: any) => (
-                          <ProductCard
-                            key={`product--key${product.id}`}
-                            product={product}
+                  // <Fragment key={index}>
+                  //   {page?.map((product: Product) => (
+                  //     <ProductCard
+                  //       key={`121`}
+                  //       product={product}
+                  //     />
+                  //   ))}
+                  //   {element && <div className="col-span-full">{element}</div>}
+                  //   {page.length! > 18 &&
+                  //     page?.map(
+                  //       (product: any) => (
+                  //         <ProductCard
+                  //           key={`product--key${product.id}`}
+                  //           product={product}
+                  //         />
+                  //       )
+                  //     )}
+                  // </Fragment>
+                  <ProductCard
+                            key={`product--key${index}`}
+                            product={page}
                           />
-                        )
-                      )}
-                  </Fragment>
                 );
               })}
             </>
