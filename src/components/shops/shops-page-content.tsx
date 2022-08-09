@@ -87,6 +87,9 @@ const ShopsPageContent: React.FC = () => {
         <Heading variant="titleLarge" className="mb-4 lg:mb-6">
           {t('text-all-shops')}
         </Heading>
+        <Heading variant="titleLarge" className="mb-4 lg:mb-6">
+          {t('text-all-shops')}
+        </Heading>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6">
           {serverShop.map((item, index) => (
             <VendorCard key={index} shop={item} />
