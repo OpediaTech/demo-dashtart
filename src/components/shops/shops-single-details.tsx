@@ -31,7 +31,7 @@ const ShopsSingleDetails: React.FC = () => {
   // if (isLoading) return <p>Loading...</p>;
 const data:any = []
   useEffect(() => {
-    console.log('Start from here');
+    // console.log('Start from here');
     getUser();
   }, [getUser]);
 
@@ -55,10 +55,10 @@ const data:any = []
 
       const result = await response.json();
       setLoading(false);
-      console.log('Total length:', result.dataLength);
-      console.log('Total store:', result.store);
+      // console.log('Total length:', result.dataLength);
+      // console.log('Total store:', result.store);
 
-      console.log('Total length Profucts:', result.data);
+      // console.log('Total length Profucts:', result.data);
       setServerShop(result);
       return result;
     } catch (err) {
@@ -116,7 +116,8 @@ const data:any = []
           </div>
 
           <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            <AllProductFeed data={serverShop} />
+            {/* <AllProductFeed data={serverShop} /> */}
+            <p> Dihan Abir </p>
           </div>
         </Element>
       </Container>

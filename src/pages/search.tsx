@@ -147,7 +147,8 @@ export default function Search() {
             <ShopFilters />
           </div>
           <div className="w-full lg:pt-4 lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">
-            <SearchTopBar searchlength={serverFilterPrd} />
+            <SearchTopBar  />
+            {/* <SearchTopBar searchlength={serverFilterPrd} /> */}
             <ProductGrid search={true} data={serverFilterPrd} />
           </div>
         </Element>

@@ -36,7 +36,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
   };
 
   const shopDetails = data.store;
-  console.log('data: ', data.store);
+  // console.log('data: ', data.store);
 
   return (
     <div className="flex flex-col px-6 pt-10 lg:pt-14">
