@@ -152,7 +152,7 @@ const AllProductFeed: FC<ProductFeedProps> = () => {
 
   return (
     <div >
-      <p>ihan abir</p>
+      <p>No Shops products found</p>
     </div>
   );
 };
