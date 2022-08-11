@@ -8,12 +8,17 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { getDirection } from '@utils/get-direction';
 
-const SearchTopBar = () => {
+
+
+
+const SearchTopBar = ({searchlength}:any) => {
   const { openFilter, displayFilter, closeFilter } = useUI();
   const { t } = useTranslation('common');
   const { locale } = useRouter();
   const dir = getDirection(locale);
   const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
+
+
   return (
     <div className="flex items-center justify-between mb-6">
       <button
@@ -25,7 +30,7 @@ const SearchTopBar = () => {
       </button>
       <div className="flex items-center justify-end w-full lg:justify-between">
         <div className="shrink-0 text-brand-dark font-medium text-15px leading-4 md:ltr:mr-6 md:rtl:ml-6 hidden lg:block mt-0.5">
-          2,683 {t('text-items-found')}
+        {searchlength?.length} {t('text-items-found')}
         </div>
         <ListBox
           options={[

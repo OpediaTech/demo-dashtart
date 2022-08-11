@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
 import { FaCheck } from 'react-icons/fa';
+import Link from 'next/link';
 
 function checkIsActive(arr: any, item: any) {
   if (arr.includes(item)) {
@@ -37,7 +38,7 @@ function CategoryFilterMenuItem({
   }, [isActive]);
 
   const { slug, name, children: items, icon } = item;
-  console.log("Data:", item)
+  // console.log("Data:", item)
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -85,13 +86,15 @@ function CategoryFilterMenuItem({
   return (
     <>
       <li
-        onClick={onClick}
+        // onClick={onClick}
         className={cn(
           'flex justify-between items-center transition text-sm md:text-15px',
           { 'bg-fill-base': isOpen },
           className
         )}
       >
+        <Link href={`/search/?c=${item}`}>
+        
         <button
           className={cn(
             'flex items-center w-full ltr:text-left rtl:text-right cursor-pointer group',
@@ -124,8 +127,9 @@ function CategoryFilterMenuItem({
             <span className="ltr:ml-auto rtl:mr-auto">{item}</span>
           )}
         </button>
+        </Link>
       </li>
-      {Array.isArray(items) && isOpen ? (
+      {/* {Array.isArray(items) && isOpen ? (
         <li>
           <ul key="content" className="px-4 text-xs">
             {items?.map((currentItem: any) => {
@@ -141,7 +145,7 @@ function CategoryFilterMenuItem({
             })}
           </ul>
         </li>
-      ) : null}
+      ) : null} */}
     </>
   );
 }
@@ -186,9 +190,9 @@ function CategoryFilterMenu({ items, className }: any) {
 
   return (
     <ul className={cn(className)}>
-      {serverCategory?.map((item: any) => (
+      {serverCategory?.map((item: any, index:any) => (
         <CategoryFilterMenuItem
-          key={`${item.slug}-key-${item.id}`}
+          key={`${index}`}
           item={item}
         />
       ))}

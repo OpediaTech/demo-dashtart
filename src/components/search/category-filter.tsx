@@ -37,7 +37,7 @@ export const CategoryFilter = () => {
             
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">
-              {t('text-no-results-found')}
+              {t('text-no-results-found')} 
             </div>
           )}
         </Scrollbar>

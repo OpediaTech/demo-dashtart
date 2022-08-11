@@ -94,7 +94,6 @@ export default function Search() {
   const router = useRouter();
   const { pathname, query } = router;
 
-  console.log('Searched result: ', pathname, query.q);
 
   const [serverFilterPrd, setServerFilterPrd] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,7 +101,8 @@ export default function Search() {
   useEffect(() => {
     console.log('Start from here');
     query?.q &&  getSearchedProducts();
-  }, []);
+    query?.c &&  getSearchedProductsByCat();
+  }, [query?.c]);
 
   async function getSearchedProducts() {
     setLoading(true);
@@ -131,7 +131,40 @@ export default function Search() {
       console.log(err);
     }
   }
-  console.log('Shops details: ', serverFilterPrd);
+
+
+  async function getSearchedProductsByCat() {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        // `https://sami-project.herokuapp.com/api/products/search/airpod`,
+        `http://localhost:5000/api/products/allcategory/${query?.c}`,
+        // `https://sami-project.herokuapp.com/api/products/allcategory/${query?.c}`,
+        {
+          method: 'GET',
+          headers: {
+            'access-control-allow-origin': '*',
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setLoading(false);
+      setServerFilterPrd(result.products);
+      console.log("Datas:",result);
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  console.log('Shops details query?.c: ', query?.c);
+  console.log('serverFilterPrd: ', serverFilterPrd);
 
   return (
     <>
@@ -147,8 +180,8 @@ export default function Search() {
             <ShopFilters />
           </div>
           <div className="w-full lg:pt-4 lg:ltr:-ml-4 lg:rtl:-mr-2 xl:ltr:-ml-8 xl:rtl:-mr-8 lg:-mt-1">
-            <SearchTopBar  />
-            {/* <SearchTopBar searchlength={serverFilterPrd} /> */}
+            {/* <SearchTopBar  /> */}
+            <SearchTopBar searchlength={serverFilterPrd} />
             <ProductGrid search={true} data={serverFilterPrd} />
           </div>
         </Element>
