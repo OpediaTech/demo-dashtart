@@ -158,7 +158,7 @@ function CategoryFilterMenu({ items, className }: any) {
   useEffect(() => {
     // console.log('Start from here');
     getUser();
-  }, [serverCategory]);
+  }, []);
 
   async function getUser() {
     try {
@@ -187,10 +187,12 @@ function CategoryFilterMenu({ items, className }: any) {
   }
 
 
+console.log('serverCategory', serverCategory)
 
   return (
     <ul className={cn(className)}>
-      {serverCategory?.map((item: any, index:any) => (
+      {[].map((item: any, index:any) => (
+      // {serverCategory?.map((item: any, index:any) => (
         <CategoryFilterMenuItem
           key={`${index}`}
           item={item}

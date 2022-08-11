@@ -33,7 +33,7 @@ export const CategoryFilter = () => {
       <div className="max-h-full overflow-hidden rounded border border-border-base">
         <Scrollbar className="w-full category-filter-scrollbar">
           {[1] ? (
-            <CategoryFilterMenu items={data?.categories?.data} />
+            <CategoryFilterMenu items={[]} />
             
           ) : (
             <div className="min-h-full pt-6 pb-8 px-9 lg:p-8">

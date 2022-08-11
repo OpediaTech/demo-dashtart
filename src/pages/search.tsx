@@ -138,7 +138,7 @@ export default function Search() {
     try {
       const response = await fetch(
         // `https://sami-project.herokuapp.com/api/products/search/airpod`,
-        `http://localhost:5000/api/products/allcategory/${query?.c}`,
+        `https://sami-project.herokuapp.com/api/products/allcategory/${query?.c}`,
         // `https://sami-project.herokuapp.com/api/products/allcategory/${query?.c}`,
         {
           method: 'GET',
