@@ -123,6 +123,9 @@ console.log("priceCart", priceCart)
               <button onClick={() => StripePaymentHandler()}   className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
                 Pay Now
               </button>
+
+
+
         // <StripeCheckout
         //   token={StripePaymentHandler}
         //   amount={product?.price * 100} // cents
