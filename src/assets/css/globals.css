@@ -454,3 +454,54 @@ input:checked + .slider:before {
 .checkout .save-change-button {
   display: none;
 }
+
+.header {
+  margin: 80px 0px 40px;
+}
+.header .icon_print {
+  color: #02b290;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.header h1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+.thank_container {
+  margin-bottom: 100px;
+}
+
+.thank_container .details p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin: 0;
+}
+.thank_container .details button {
+  margin: 40px 0px;
+  padding: 20px 30px;
+  background-color: #02b290;
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+  border-radius: 15px;
+  border: 1px solid #0cc49f;
+}
+
+.shipping_information {
+  margin: 10px 0px;
+  padding: 30px;
+  background-color: white;
+  border: 2px solid #e6e6e6;
+  border-radius: 10px;
+}
+.shipping_information h1 {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 20px 0px;
+}
