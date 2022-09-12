@@ -9,6 +9,6 @@ export default function OrdersTablePage() {
       {!isLoading ? <OrderTable orders={data?.data} /> : <div>Loading...</div>}
     </div>
   );
-}
+} 
 
 OrdersTablePage.Layout = Layout;

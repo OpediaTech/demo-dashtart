@@ -484,7 +484,7 @@ input:checked + .slider:before {
   background-color: #02b290;
   color: #ffffff;
 
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
@@ -504,4 +504,31 @@ input:checked + .slider:before {
   font-weight: 800;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin: 20px 0px;
+}
+
+.horizontalRow {
+  /* height: 1px; */
+  border: 30px solid #e6e6e6;
+  border-radius: 4px;
+}
+.colmain {
+  padding: 62px 10px;
+  border: 2px solid #ebebeb;
+  border-radius: 4px;
+  background: #f6f6f6;
+}
+.col-Sec h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 20px 0px;
+}
+.col-Sec p {
+}
+.col-Sec button {
+  padding: 10px 20px;
+  background-color: #02b290;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-top: 10px;
 }

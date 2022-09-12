@@ -3,8 +3,8 @@ import cn from 'classnames';
 import Link from '@components/ui/link';
 import { useTranslation } from 'next-i18next';
 const data = {
-  title: 'app-heading',
-  description: 'app-description',
+  title: 'Sami E-commercec',
+  description: 'E-commerce platform',
   appImage: '/assets/images/app-thumbnail.png',
   appButtons: [
     {
