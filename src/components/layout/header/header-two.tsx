@@ -163,7 +163,7 @@ const Header: React.FC = () => {
                                 as="h3"
                                 className="text-lg leading-6 font-medium text-gray-900"
                               >
-                                Search your area by ZIP code
+                                Search Your Area by ZIP code
                               </Dialog.Title>
                               {/* {zipCodeResult ? <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
                         Search your area by ZIP code
