@@ -155,7 +155,8 @@ const Header: React.FC = () => {
                             <div className="locationtxtxtx  ">
                               {/* <ExclamationIcon className="h-6 w-6 text-red-600" aria-hidden="true" /> */}
                               <p>Locations</p>
-                              <MdLocationOn className="lcoationmtmt" />
+                              <MdLocationOn />
+                              {/* <MdLocationOn className="lcoationmtmt" /> */}
                             </div>
                             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                               <Dialog.Title
