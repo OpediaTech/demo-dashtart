@@ -17,7 +17,7 @@ export default function DropDownC({ data }: any) {
   return (
     <div>
       <Button
-        color="primary"
+        style={{ backgroundColor: '#fff', color: '#000' }}
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"

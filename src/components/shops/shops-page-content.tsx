@@ -9,7 +9,7 @@
 //   const { data, error } = useShopsQuery({
 //     limit: 9,
 //   });
-//  const allstore :any = data?.shop?.data? data?.shop?.data : []; 
+//  const allstore :any = data?.shop?.data? data?.shop?.data : [];
 //   if (error) return <Alert message={error?.message} />;
 
 //   return (
@@ -31,12 +31,12 @@
 
 // export default ShopsPageContent;
 
-
 import VendorCard from '@components/cards/vendor-card';
 import { useShopsQuery } from '@framework/shop/get-shops';
 import Alert from '@components/ui/alert';
 import { useTranslation } from 'next-i18next';
 import Heading from '@components/ui/heading';
+import Skeletnnn from './Skeletnnn';
 import { useEffect, useState } from 'react';
 
 const ShopsPageContent: React.FC = () => {
@@ -91,9 +91,16 @@ const ShopsPageContent: React.FC = () => {
           {t('text-all-shops')}
         </Heading>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6">
-          {serverShop.map((item, index) => (
-            <VendorCard key={index} shop={item} />
-          ))}
+          {!serverShop.length ? (
+            <div>
+              <p>Loading...</p>
+              <Skeletnnn />
+            </div>
+          ) : (
+            serverShop.map((item, index) => (
+              <VendorCard key={index} shop={item} />
+            ))
+          )}
         </div>
       </div>
     </div>

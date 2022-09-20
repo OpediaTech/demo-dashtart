@@ -21,7 +21,7 @@ const ShopsSingleDetails: React.FC = () => {
     query: { slug },
   } = useRouter();
   const { t } = useTranslation('common');
-  const {  isLoading } = useShopQuery(slug as string);
+  const { isLoading } = useShopQuery(slug as string);
   const { openShop, displayShop, closeShop } = useUI();
   const { width } = useWindowSize();
   const { locale } = useRouter();
@@ -29,7 +29,7 @@ const ShopsSingleDetails: React.FC = () => {
   const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
 
   // if (isLoading) return <p>Loading...</p>;
-const data:any = []
+  const data: any = [];
   useEffect(() => {
     // console.log('Start from here');
     getUser();
@@ -58,8 +58,8 @@ const data:any = []
       // console.log('Total length:', result.dataLength);
       // console.log('Total store:', result.store);
 
-      // console.log('Total length Profucts:', result.data);
       setServerShop(result);
+      console.log('Total length Profucts:', result.data);
       return result;
     } catch (err) {
       console.log(err);
@@ -116,8 +116,8 @@ const data:any = []
           </div>
 
           <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            {/* <AllProductFeed data={serverShop} /> */}
-            <p> Dihan Abir </p>
+            {/* <p> Dihan Abir </p> */}
+            <AllProductFeed data={serverShop} />
           </div>
         </Element>
       </Container>
