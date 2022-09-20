@@ -94,39 +94,38 @@ function CategoryFilterMenuItem({
         )}
       >
         <Link href={`/search/?c=${item}`}>
-        
-        <button
-          className={cn(
-            'flex items-center w-full ltr:text-left rtl:text-right cursor-pointer group',
-            { 'py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3': depth > 0 }
-          )}
-          // onClick={handleChange}
-        >
-          {icon && (
-            <div className="inline-flex shrink-0 2xl:w-12 2xl:h-12 3xl:w-auto 3xl:h-auto ltr:mr-2.5 rtl:ml-2.5 md:ltr:mr-4 md:rtl:ml-4 2xl:ltr:mr-3 2xl:rtl:ml-3 3xl:ltr:mr-4 3xl:rtl:ml-4">
-              <Image
-                src={icon ?? '/assets/placeholder/category-small.svg'}
-                alt={name || t('text-category-thumbnail')}
-                width={40}
-                height={40}
-              />
-            </div>
-          )}
-          <span className="text-brand-dark capitalize py-0.5">{item}</span>
-          {depth > 0 && (
-            <span
-              className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
-                selectedCategories.includes(slug) &&
-                'border-yellow-100 bg-yellow-100'
-              }`}
-            >
-              {selectedCategories.includes(slug) && <FaCheck />}
-            </span>
-          )}
-          {expandIcon && (
-            <span className="ltr:ml-auto rtl:mr-auto">{item}</span>
-          )}
-        </button>
+          <button
+            className={cn(
+              'flex items-center w-full ltr:text-left rtl:text-right cursor-pointer group',
+              { 'py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3': depth > 0 }
+            )}
+            // onClick={handleChange}
+          >
+            {icon && (
+              <div className="inline-flex shrink-0 2xl:w-12 2xl:h-12 3xl:w-auto 3xl:h-auto ltr:mr-2.5 rtl:ml-2.5 md:ltr:mr-4 md:rtl:ml-4 2xl:ltr:mr-3 2xl:rtl:ml-3 3xl:ltr:mr-4 3xl:rtl:ml-4">
+                <Image
+                  src={icon ?? '/assets/placeholder/category-small.svg'}
+                  alt={name || t('text-category-thumbnail')}
+                  width={40}
+                  height={40}
+                />
+              </div>
+            )}
+            <span className="text-brand-dark capitalize py-0.5">{item}</span>
+            {depth > 0 && (
+              <span
+                className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-border-four rounded-full ltr:ml-auto rtl:mr-auto transition duration-500 ease-in-out group-hover:border-yellow-100 text-brand-light ${
+                  selectedCategories.includes(slug) &&
+                  'border-yellow-100 bg-yellow-100'
+                }`}
+              >
+                {selectedCategories.includes(slug) && <FaCheck />}
+              </span>
+            )}
+            {expandIcon && (
+              <span className="ltr:ml-auto rtl:mr-auto">{item}</span>
+            )}
+          </button>
         </Link>
       </li>
       {/* {Array.isArray(items) && isOpen ? (
@@ -151,7 +150,6 @@ function CategoryFilterMenuItem({
 }
 
 function CategoryFilterMenu({ items, className }: any) {
-
   const [loading, setLoading] = useState(true);
 
   const [serverCategory, setServerCategory] = useState([]);
@@ -186,17 +184,13 @@ function CategoryFilterMenu({ items, className }: any) {
     }
   }
 
-
-console.log('serverCategory', serverCategory)
+  console.log('serverCategory', serverCategory);
 
   return (
     <ul className={cn(className)}>
-      {[].map((item: any, index:any) => (
-      // {serverCategory?.map((item: any, index:any) => (
-        <CategoryFilterMenuItem
-          key={`${index}`}
-          item={item}
-        />
+      {[].map((item: any, index: any) => (
+        // {serverCategory?.map((item: any, index:any) => (
+        <CategoryFilterMenuItem key={`${index}`} item={item} />
       ))}
     </ul>
   );

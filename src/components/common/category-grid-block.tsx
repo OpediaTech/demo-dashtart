@@ -94,14 +94,12 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
       <SectionHeader
         sectionHeading="text-what-food-you-love"
         sectionSubHeading="text-favorite-different-categories"
-        headingPosition="center"
+        // headingPosition="center"
       />
       <div className="block 2xl:flex justify-center flex-wrap 3xl:-mx-3.5">
-        {
-        loading ? (
+        {loading ? (
           <CategoryCardLoader uniqueKey={`fsdfsdf`} />
-        ) : width! < 1536 ? 
-        (
+        ) : width! < 1536 ? (
           <Carousel
             autoplay={false}
             breakpoints={breakpoints}
@@ -144,7 +142,6 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
             <CategoryCard
               key={`category--key-${index}`}
               item={category}
-              
               href={{
                 pathname: ROUTES.SEARCH,
                 // query: { category: category?.title },

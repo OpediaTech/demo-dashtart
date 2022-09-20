@@ -20,13 +20,16 @@ const CheckoutDetails: React.FC<{ priceCart: any }> = ({ priceCart }) => {
       setBindIndex(itemIndex);
     }
   };
-  let priceCart1:any = priceCart*100
+  let priceCart1: any = priceCart * 100;
 
-console.log("priceCart", priceCart)
+  console.log('priceCart', priceCart);
+
   const product = {
     name: 'Stripe course',
-    price: Math.round(priceCart1.toFixed(2)) ,
+    price: Math.round(priceCart1.toFixed(2)),
     productby: 'facebook',
+    image:
+      'https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
   };
 
   interface tokeninterface {
@@ -34,10 +37,10 @@ console.log("priceCart", priceCart)
   }
 
   const StripePaymentHandler = () => {
-    localStorage.removeItem("borobazar-cart");
+    localStorage.removeItem('borobazar-cart');
     console.log('token checkout');
     const data = {
-      product
+      product,
     };
 
     // fetch(`http://localhost:5000/api/products/payment`, {
@@ -49,21 +52,19 @@ console.log("priceCart", priceCart)
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if(response.ok) return response.json();
+        if (response.ok) return response.json();
         // const noData:any = ''
         // console.log("Removesd: ",localStorage.getItem("borobazar-cart") )
         // if(response.ok) return localStorage.setItem("borobazar-cart", noData) ;
-         
-        return response.json().then(json => Promise.reject(json))
 
+        return response.json().then((json) => Promise.reject(json));
       })
-      .then(({url})=>{
-        console.log(url)
-        window.location = url
+      .then(({ url }) => {
+        console.log(url);
+        window.location = url;
       })
       .catch((err) => console.log(err));
   };
-
 
   // const StripePaymentHandler = (token: any) => {
   //   console.log('token checkout', token);
@@ -120,11 +121,12 @@ console.log("priceCart", priceCart)
       id: 6,
       title: 'text-payment-option',
       component: (
-              <button onClick={() => StripePaymentHandler()}   className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3">
-                Pay Now
-              </button>
-
-
+        <button
+          onClick={() => StripePaymentHandler()}
+          className="bg-brand text-brand-light rounded font-semibold font-[14px] px-4 py-3"
+        >
+          Pay Now
+        </button>
 
         // <StripeCheckout
         //   token={StripePaymentHandler}

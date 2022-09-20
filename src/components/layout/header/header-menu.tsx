@@ -5,7 +5,8 @@ import ListCat from '@components/ui/list-cat';
 import { useTranslation } from 'next-i18next';
 
 import cn from 'classnames';
-import { useEffect,Fragment, useRef, useState } from 'react';
+import { useEffect, Fragment, useRef, useState } from 'react';
+import DropDownC from './DropDownC';
 const zipcodes = require('zipcodes');
 
 interface MenuProps {
@@ -14,7 +15,6 @@ interface MenuProps {
 }
 
 const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
-
   const { t } = useTranslation('menu');
   const cat = {
     id: 2,
@@ -86,8 +86,6 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
 
   // console.log('All Datas come from server:', serverCategory);
 
-
-
   return (
     <nav
       className={cn(
@@ -96,7 +94,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
       )}
     >
       {/* {loading && 'Loading'} */}
-      {
+      {/* {
         <div className="relative py-3 mx-3 cursor-pointer menuItem group xl:mx-4">
           <Link
             href="/"
@@ -110,7 +108,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
 
           <div className="absolute z-30 opacity-0 subMenu shadow-dropDown transition-all duration-300 invisible bg-brand-light ltr:left-0 rtl:right-0 w-[220px] xl:w-[240px] group-hover:opacity-100">
             <ul className="py-5 text-sm text-brand-muted">
-              {serverCategory.map((menu: any, index: number) => {
+              {serverCategory?.map((menu: any, index: number) => {
                 const dept: number = 1;
                 const menuName: string = `sidebar-menu-${dept}-${index}`;
                 return (
@@ -127,7 +125,12 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
             </ul>
           </div>
         </div>
-      }
+      } */}
+
+      <div className="relative py-3 mx-3 cursor-pointer menuItem group xl:mx-4">
+        <DropDownC data={serverCategory} />
+      </div>
+
       {data?.map((item: any) => (
         <div
           className="relative py-3 mx-3 cursor-pointer menuItem group xl:mx-4"
@@ -167,7 +170,6 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
           )}
         </div>
       ))}
-      
     </nav>
   );
 };
