@@ -94,7 +94,7 @@ const ShopsPageContent: React.FC = () => {
           {!serverShop.length ? (
             <div>
               <p>Loading...</p>
-              <Skeletnnn />
+              {/* <Skeletnnn /> */}
             </div>
           ) : (
             serverShop.map((item, index) => (
