@@ -84,9 +84,9 @@ const ShopsPageContent: React.FC = () => {
   return (
     <div className="pt-10 lg:pt-12 xl:pt-14 pb-14 lg:pb-16 xl:pb-20 px-4 md:px-8">
       <div className="w-full xl:max-w-[1490px] mx-auto">
-        <Heading variant="titleLarge" className="mb-4 lg:mb-6">
+        {/* <Heading variant="titleLarge" className="mb-4 lg:mb-6">
           {t('text-all-shops')}
-        </Heading>
+        </Heading> */}
         <Heading variant="titleLarge" className="mb-4 lg:mb-6">
           {t('text-all-shops')}
         </Heading>
@@ -94,7 +94,7 @@ const ShopsPageContent: React.FC = () => {
           {!serverShop.length ? (
             <div>
               <p>Loading...</p>
-              {/* <Skeletnnn /> */}
+              <Skeletnnn />
             </div>
           ) : (
             serverShop.map((item, index) => (

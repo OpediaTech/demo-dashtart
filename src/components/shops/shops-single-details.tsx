@@ -116,8 +116,8 @@ const ShopsSingleDetails: React.FC = () => {
           </div>
 
           <div className="w-full lg:ltr:pl-7 lg:rtl:pr-7">
-            <p> Dihan Abir </p>
-            {/* <AllProductFeed data={serverShop} /> */}
+            {/* <p> Dihan Abir </p> */}
+            <AllProductFeed data={serverShop} />
           </div>
         </Element>
       </Container>
