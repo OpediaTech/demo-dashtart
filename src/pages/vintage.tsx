@@ -23,7 +23,7 @@ import { LIMITS } from '@framework/utils/limits';
 export default function Home() {
   return (
     <>
-      <Seo
+      {/* <Seo
         title="Vintage"
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
         path="vintage"
@@ -42,7 +42,7 @@ export default function Home() {
           />
         </Element>
       </Container>
-      <DownloadApps />
+      <DownloadApps /> */}
     </>
   );
 }
