@@ -154,7 +154,7 @@ const Header: React.FC = () => {
                           <div className="sm:flex sm:items-start">
                             <div className="locationtxtxtx  ">
                               {/* <ExclamationIcon className="h-6 w-6 text-red-600" aria-hidden="true" /> */}
-                              <p>Locations</p>
+                              <p>Locations Map</p>
                               <MdLocationOn />
                               {/* <MdLocationOn className="lcoationmtmt" /> */}
                             </div>
