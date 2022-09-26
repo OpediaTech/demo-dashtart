@@ -28,7 +28,7 @@ const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
   async function getUser() {
     setLoading(true);
     try {
-      const response = await fetch(`https://sami-project.herokuapp.com/api/products`, {
+      const response = await fetch(`http://localhost:5055/api/products`, {
         method: 'GET',
         headers: {
           'access-control-allow-origin': '*',
@@ -42,7 +42,7 @@ const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
 
       const result = await response.json();
       setLoading(false);
-      setServerProducts(result.products);
+      setServerProducts(result);
       return result;
     } catch (err) {
       console.log(err);

@@ -11,13 +11,13 @@ export const CheckoutItem: React.FC<{ item: Item }> = ({ item }) => {
   return (
     <div className="flex items-center py-4 border-b border-border-base ">
       <div className="flex w-16 h-16 border rounded-md border-border-base shrink-0">
-        <Image
+        {/* <Image
           src={item.image ?? '/assets/placeholder/order-product.svg'}
           alt={'item image'}
           className="rounded-md ltr:mr-5 rtl:ml-5"
           width={64}
           height={64}
-        />
+        /> */}
       </div>
       <h6 className="font-normal text-15px text-brand-dark ltr:pl-3 rtl:pr-3">
         {generateCartItemName(item.name, item.attributes)}

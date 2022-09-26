@@ -63,16 +63,13 @@ const CategoryGridBlock: React.FC<CategoriesProps> = ({
   async function getUser() {
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://sami-project.herokuapp.com/api/products/allcategory`,
-        {
-          method: 'GET',
-          headers: {
-            'access-control-allow-origin': '*',
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        }
-      );
+      const response = await fetch(`http://localhost:5055/api/category/`, {
+        method: 'GET',
+        headers: {
+          'access-control-allow-origin': '*',
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);

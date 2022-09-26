@@ -61,6 +61,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   async function getUser() {
     try {
       const response = await fetch(
+        // `https://sami-project.herokuapp.com/api/products/allcategory`,
         `https://sami-project.herokuapp.com/api/products/allcategory`,
         {
           method: 'GET',

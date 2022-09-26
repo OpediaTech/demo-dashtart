@@ -116,25 +116,25 @@ export default function ProductPopup() {
     });
   }
   async function addToWishlist() {
-    
-    const Fetchwishlst:any = localStorage.getItem('AllWishlist');
-    let Fetchwishlst1:any = JSON.parse(Fetchwishlst)?.length ? JSON.parse(Fetchwishlst) : [];
+    const Fetchwishlst: any = localStorage.getItem('AllWishlist');
+    let Fetchwishlst1: any = JSON.parse(Fetchwishlst)?.length
+      ? JSON.parse(Fetchwishlst)
+      : [];
 
-    
-    const ftdata = [...Fetchwishlst1]
+    const ftdata = [...Fetchwishlst1];
 
-    const allwr:any = [data, ...ftdata]
+    const allwr: any = [data, ...ftdata];
     localStorage.setItem('AllWishlist', JSON.stringify(allwr));
     setAddToWishlistLoader(true);
-    
+
     // const findornot = Fetchwishlst1.find((i:any) =>{
-      
+
     //    return i._id === data._id })
 
     //    findornot ? setFavorite(true) :  setFavorite(false)
 
-    setFavorite(!favorite)
-    
+    setFavorite(!favorite);
+
     const toastStatus: string =
       favorite === true ? t('text-remove-favorite') : t('text-added-favorite');
     setTimeout(() => {
@@ -169,7 +169,7 @@ export default function ProductPopup() {
                 <ThumbnailCarousel gallery={gallery} />
               ) : (
                 <div className="flex items-center justify-center w-auto">
-                  <Image src={image[0]} alt={name!} width={650} height={590} />
+                  <Image src={image} alt={name!} width={650} height={590} />
                 </div>
               )}
             </div>

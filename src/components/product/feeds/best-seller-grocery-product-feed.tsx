@@ -25,7 +25,7 @@ const BestSellerGroceryProductFeed: FC<ProductFeedProps> = ({ className }) => {
   async function getUser() {
     setLoading(true);
     try {
-      const response = await fetch(`https://sami-project.herokuapp.com/api/products`, {
+      const response = await fetch(`http://localhost:5055/api/products/`, {
         method: 'GET',
         headers: {
           'access-control-allow-origin': '*',
@@ -39,7 +39,9 @@ const BestSellerGroceryProductFeed: FC<ProductFeedProps> = ({ className }) => {
 
       const result = await response.json();
       setLoading(false);
-      setServerProducts(result.products);
+      setServerProducts(result);
+      console.log('New products', result[0]);
+      // setServerProducts([]);
       return result;
     } catch (err) {
       console.log(err);

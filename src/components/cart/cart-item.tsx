@@ -18,20 +18,22 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     currencyCode: 'USD',
   });
   const outOfStock = !isInStock(item.id);
+  console.log('Cart page: ', item);
   return (
     <div
       className={`group w-full h-auto flex justify-start items-center text-brand-light py-4 md:py-7 border-b border-border-one border-opacity-70 relative last:border-b-0`}
       title={item?.name}
     >
       <div className="relative flex rounded overflow-hidden shrink-0 cursor-pointer w-[90px] md:w-[100px] h-[90px] md:h-[100px]">
-        <Image
-          src={item?.image ?? '/assets/placeholder/cart-item.svg'}
+        {/* <Image
+          src="https://images.unsplash.com/photo-1664055258377-712865beb272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          // src={item?.image ?? '/assets/placeholder/cart-item.svg'}
           width={100}
           height={100}
           loading="eager"
           alt={item.name || 'Product Image'}
           className="object-cover bg-fill-thumbnail"
-        />
+        /> */}
         <div
           className="absolute top-0 flex items-center justify-center w-full h-full transition duration-200 ease-in-out bg-black ltr:left-0 rtl:right-0 bg-opacity-30 md:bg-opacity-0 md:group-hover:bg-opacity-30"
           onClick={() => clearItemFromCart(item.id)}
@@ -44,7 +46,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       <div className="flex items-start justify-between w-full overflow-hidden">
         <div className="ltr:pl-3 rtl:pr-3 md:ltr:pl-4 md:rtl:pr-4">
           <Link
-            href={`${ROUTES.PRODUCT}/${item?.slug}`}
+            href={`${ROUTES.PRODUCT}/${item?.id}`}
             className="block leading-5 transition-all text-brand-dark text-13px sm:text-sm lg:text-15px hover:text-brand"
           >
             {item?.name}

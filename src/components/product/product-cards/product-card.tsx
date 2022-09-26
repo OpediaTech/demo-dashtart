@@ -23,7 +23,7 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   const { id, countInStock, category } = data ?? {};
   // const { id, quantity, product_type } = data ?? {};
 
-  // console.log('data frm prdcts card ', data);
+  console.log('data frm prdcts card ', data);
 
   const { width } = useWindowSize();
   const { openModal } = useModalAction();
@@ -55,7 +55,7 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
 }
 const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
   // const { name, image, unit, product_type } = product ?? {};
-  // console.log('image', product);
+  console.log('image: ', product.image);
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
   const { price, basePrice, discount } = usePrice({
@@ -88,7 +88,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
       <div className="relative shrink-0">
         <div className="flex overflow-hidden max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
           <Image
-            src={product.image[0] ?? productPlaceholder}
+            src={product.image}
             // src={image?.thumbnail ?? productPlaceholder}
             alt={product.name || 'Product Image'}
             width={230}

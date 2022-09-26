@@ -15,7 +15,7 @@ interface Props {
 
 const CategoryCard: React.FC<Props> = ({ item, href, className }) => {
   const { t } = useTranslation('common');
-  const { name, image } = item ?? {};
+  const { parent, image } = item ?? {};
   const { locale } = useRouter();
   const dir = getDirection(locale);
   return (
@@ -33,7 +33,7 @@ const CategoryCard: React.FC<Props> = ({ item, href, className }) => {
         >
           <Image
             src={image?.original ?? categoryPlaceholder}
-            alt={name || t('text-card-thumbnail')}
+            alt={parent || t('text-card-thumbnail')}
             width={178}
             height={178}
             quality={100}
@@ -49,7 +49,7 @@ const CategoryCard: React.FC<Props> = ({ item, href, className }) => {
         >
           <Image
             src={image?.original ?? categoryPlaceholder}
-            alt={name || t('text-card-thumbnail')}
+            alt={parent || t('text-card-thumbnail')}
             width={178}
             height={178}
             quality={100}
@@ -58,7 +58,7 @@ const CategoryCard: React.FC<Props> = ({ item, href, className }) => {
         </div>
       </div>
       <h3 className="capitalize text-brand-dark text-sm sm:text-15px lg:text-base truncate">
-        {name}
+        {parent}
       </h3>
     </Link>
   );
